@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="info" monitorInterval="60">
+	<properties>
+		<property name="filename">/../log/apiserver.log</property>
+	</properties>
+
+	<appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}{GMT+8} [%t] %-5p [%c{1}] %m%n" />
+		</Console>
+
+		<RollingFile name="RollingFile" fileName="${filename}"
+			append="true" bufferedIO="true" immediateFlush="true"
+			filePattern="${filename}.%d{yyyy-MM-dd}.gz">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}{GMT+0} [%t] %-5p [%c{1}] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<logger name="com.objectiva" level="INFO" additivity="false">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="STDOUT" />
+		</logger>
+
+		<root level="INFO">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="STDOUT" />
+		</root>
+	</loggers>
+
+</configuration>
