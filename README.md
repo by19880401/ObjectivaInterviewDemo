@@ -1,2 +1,2 @@
 # ObjectivaInterviewDemo
-The interview code for the Objectiva, we will keep maintaining it.
+It's the interview demo for Objectiva LLC, share you.
